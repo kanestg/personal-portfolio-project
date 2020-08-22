@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+<a href="{% url 'blog:all_blogs' %}">Blogs</a>
+<br>
+<h1>This is homepage</h1>
+
+{% load static %}
+<img src="{% static 'portfolio\117178056_2647935572133091_8068990593285284116_n.jpg' %}">
+
+{% for project in projects %}
+<h2>{{ project.title }}</h2>
+<h3>{{ project.description }}</h3>
+<img src="{{ project.image.url }}" alt="{{ project.image.url }}">
+<br>
+{% if project.url %}
+<a href="{{ project.url }}">Link</a>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
